@@ -1,6 +1,5 @@
-package com.example.demo;
+package com.example.demo.customers;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

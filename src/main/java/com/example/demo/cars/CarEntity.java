@@ -1,7 +1,15 @@
-package com.example.demo;
+package com.example.demo.cars;
 
-public class CarDto {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "cars")
+public class CarEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id",updatable = false, nullable = false)
     private int id;
+
     private String price;
     private int doors;
     private int persons;

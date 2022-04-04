@@ -1,15 +1,7 @@
-package com.example.demo;
+package com.example.demo.customers;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "customers")
-public class CustomerEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="customer_id",updatable = false, nullable = false)
+public class CustomerDto {
     private int customer_id;
-
     private String identification_number;
     private String customer_firstname;
     private String customer_lastname;
