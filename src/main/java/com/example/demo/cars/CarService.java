@@ -84,7 +84,10 @@ public class CarService {
         }
     }
 
-
+    @Transactional
+    public List<CarEntity> getAllCars(){
+        return carRepository.findAll();
+    }
 
 
 
