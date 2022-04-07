@@ -1,5 +1,6 @@
 package com.example.demo.customers;
 
+import com.example.demo.cars.CarEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -79,5 +80,9 @@ public class CustomerService {
             byId.get().setIdentification_number(customerDto.getIdentification_number());
             byId.get().setO_number(customerDto.getO_number());
         }
+    }
+    @Transactional
+    public List<CustomerEntity> getAllCustomers(){
+        return customerRepository.findAll();
     }
 }
