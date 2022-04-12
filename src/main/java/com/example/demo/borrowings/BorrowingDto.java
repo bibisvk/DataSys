@@ -1,31 +1,26 @@
 package com.example.demo.borrowings;
 
+import com.example.demo.cars.CarDto;
+import com.example.demo.customers.CustomerDto;
+
 import java.util.Date;
 
 public class BorrowingDto {
     private Long borrowingId;
-    private int personalNumber;
-    private int carNumber;
     private Date borrowingStartDate;
     private Date borrowingEndDate;
-    private int customerId;
-    private int carId;
+    private CarDto carDto;
 
-    public int getCustomerId() {
-        return customerId;
+    public CustomerDto getCustomerDto() {
+        return customerDto;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomerDto(CustomerDto customerDto) {
+        this.customerDto = customerDto;
     }
 
-    public int getCarId() {
-        return carId;
-    }
+    private CustomerDto customerDto;
 
-    public void setCarId(int carId) {
-        this.carId = carId;
-    }
 
     public Long getBorrowingId() {
         return borrowingId;
@@ -35,21 +30,6 @@ public class BorrowingDto {
         this.borrowingId = borrowingId;
     }
 
-    public int getPersonalNumber() {
-        return personalNumber;
-    }
-
-    public void setPersonalNumber(int personalNumber) {
-        this.personalNumber = personalNumber;
-    }
-
-    public int getCarNumber() {
-        return carNumber;
-    }
-
-    public void setCarNumber(int carNumber) {
-        this.carNumber = carNumber;
-    }
 
     public Date getBorrowingStartDate() {
         return borrowingStartDate;
@@ -65,5 +45,16 @@ public class BorrowingDto {
 
     public void setBorrowingEndDate(Date borrowingEndDate) {
         this.borrowingEndDate = borrowingEndDate;
+    }
+
+    public CarDto getCarDto() {
+        return carDto;
+    }
+
+    public void setCarDto(CarDto carDto) {
+        this.carDto = carDto;
+    }
+
+    public void setCarDto(int id) {
     }
 }
