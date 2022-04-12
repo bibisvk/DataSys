@@ -80,4 +80,8 @@ public class CustomerService {
             byId.get().setO_number(customerDto.getO_number());
         }
     }
+    @Transactional
+    public List<CustomerEntity> getAllCustomers(){
+        return customerRepository.findAll();
+    }
 }
