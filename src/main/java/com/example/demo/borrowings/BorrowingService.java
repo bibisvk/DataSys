@@ -38,12 +38,10 @@ public class BorrowingService {
         BorrowingDto borrowingDto = new BorrowingDto();
 
         borrowingDto.setBorrowingId(borrowingEntity.getBorrowingId());
+        borrowingDto.setCustomerId((long) borrowingEntity.getBorrower().getCustomer_id());
+        borrowingDto.setCarId((long) borrowingEntity.getBorrowedCar().getId());
         borrowingDto.setBorrowingStartDate(borrowingEntity.getBorrowingStartDate());
         borrowingDto.setBorrowingEndDate(borrowingEntity.getBorrowingEndDate());
-
-        //TODO setovanie parametrov
-        //borrowingDto.setCustomerId(borrowingEntity.getBorrower().getCustomer_id());
-        //borrowingDto.setCarId(borrowingEntity.getBorrowedCar().getId());
 
         return borrowingDto;
     }
@@ -71,8 +69,8 @@ public class BorrowingService {
     public Long createBorrowing(BorrowingDto borrowingDto) {
         BorrowingEntity borrowingEntity = new BorrowingEntity();
 
-        Optional <CustomerEntity> c = customerRepository.findById(borrowingDto.getCustomerDto().getCustomer_id());
-        Optional <CarEntity> b = carRepository.findById(borrowingDto.getCarDto().getId());
+        Optional <CustomerEntity> c = customerRepository.findById(Math.toIntExact(borrowingDto.getCustomerId()));
+        Optional <CarEntity> b = carRepository.findById(Math.toIntExact(borrowingDto.getCarId()));
 
         if(c.isPresent()) {
             borrowingEntity.setBorrower(c.get());
@@ -81,8 +79,8 @@ public class BorrowingService {
         if(b.isPresent()) {
             borrowingEntity.setBorrowedCar(b.get());
         }
-        borrowingDto.setBorrowingStartDate(borrowingEntity.getBorrowingStartDate());
-        borrowingDto.setBorrowingEndDate(borrowingEntity.getBorrowingEndDate());
+        borrowingEntity.setBorrowingStartDate(borrowingDto.getBorrowingStartDate());
+        borrowingEntity.setBorrowingEndDate(borrowingDto.getBorrowingEndDate());
 
         this.borrowingRepository.save(borrowingEntity);
 
@@ -95,8 +93,8 @@ public class BorrowingService {
 
         if (borrowingEntity.isPresent()) {
 
-            Optional <CustomerEntity> c = customerRepository.findById(borrowingDto.getCustomerDto().getCustomer_id());
-            Optional <CarEntity> b = carRepository.findById(borrowingDto.getCarDto().getId());
+            Optional <CustomerEntity> c = customerRepository.findById(Math.toIntExact(borrowingDto.getCustomerId()));
+            Optional <CarEntity> b = carRepository.findById(Math.toIntExact(borrowingDto.getCarId()));
 
             if(c.isPresent()) {
                 borrowingEntity.get().setBorrower(c.get());
@@ -105,11 +103,9 @@ public class BorrowingService {
             if(b.isPresent()) {
                 borrowingEntity.get().setBorrowedCar(b.get());
             }
-            /*
-            borrowingDto.setBorrowingStartDate(borrowingEntity.getBorrowingStartDate());
-            borrowingDto.setBorrowingEndDate(borrowingEntity.getBorrowingEndDate());
 
-             */
+//            borrowingEntity.setBorrowingStartDate(borrowingDto.getBorrowingStartDate());
+//            borrowingEntity.setBorrowingEndDate(borrowingDto.getBorrowingEndDate());
 
         }
     }
