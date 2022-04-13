@@ -1,5 +1,6 @@
 package com.example.demo.cars;
 
+import com.example.demo.customers.CustomerEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,10 +84,8 @@ public class CarService {
             byId.get().setDoors(carDto.getDoors());
         }
     }
-
-
-
-
-
-
+    @Transactional
+    public List<CarEntity> getAllCars(){
+        return carRepository.findAll();
+    }
 }
