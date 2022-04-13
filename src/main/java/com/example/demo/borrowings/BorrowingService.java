@@ -117,5 +117,9 @@ public class BorrowingService {
             borrowingRepository.delete(byId.get());
         }
     }
+    @Transactional
+    public List<BorrowingEntity> getAllBorrowings(){
+        return borrowingRepository.findAll();
+    }
 
 }
