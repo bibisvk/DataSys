@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class BorrowingDto {
-    private Long borrowingId;
+    private int borrowingId;
     private Long carId;
     private Long customerId;
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -52,11 +52,11 @@ public class BorrowingDto {
     private CustomerDto customerDto;
 
 
-    public Long getBorrowingId() {
+    public int getBorrowingId() {
         return borrowingId;
     }
 
-    public void setBorrowingId(Long borrowingId) {
+    public void setBorrowingId(int borrowingId) {
         this.borrowingId = borrowingId;
     }
 

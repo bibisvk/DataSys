@@ -14,7 +14,7 @@ public class BorrowingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="borrowing_id",updatable = false, nullable = false)
-    private Long borrowingId;
+    private int borrowingId;
 
     @JoinColumn(name = "customerId")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -46,16 +46,13 @@ public class BorrowingEntity {
         this.borrowingEndDate = borrowingEndDate;
     }
 
-    public void setBorrowingId(long borrowingId) {
+    public void setBorrowingId(int borrowingId) {
         this.borrowingId = borrowingId;
     }
-    public Long getBorrowingId() {
+    public int getBorrowingId() {
         return borrowingId;
     }
 
-    public void setBorrowingId(Long borrowingId) {
-        this.borrowingId = borrowingId;
-    }
     public void setBorrower(CustomerEntity borrower){this.borrower = borrower;}
     public CustomerEntity getBorrower(){
         return borrower;

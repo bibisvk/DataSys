@@ -66,7 +66,7 @@ public class BorrowingService {
     }
 
     @Transactional
-    public Long createBorrowing(BorrowingDto borrowingDto) {
+    public int createBorrowing(BorrowingDto borrowingDto) {
         BorrowingEntity borrowingEntity = new BorrowingEntity();
 
         Optional <CustomerEntity> c = customerRepository.findById(Math.toIntExact(borrowingDto.getCustomerId()));
@@ -104,8 +104,11 @@ public class BorrowingService {
                 borrowingEntity.get().setBorrowedCar(b.get());
             }
 
-//            borrowingEntity.setBorrowingStartDate(borrowingDto.getBorrowingStartDate());
-//            borrowingEntity.setBorrowingEndDate(borrowingDto.getBorrowingEndDate());
+            borrowingEntity.get().setBorrowingStartDate(borrowingDto.getBorrowingStartDate());
+            borrowingEntity.get().setBorrowingEndDate(borrowingDto.getBorrowingEndDate());
+
+//            borrowingDto.setBorrowingStartDate(borrowingEntity.get().getBorrowingStartDate());
+//            borrowingDto.setBorrowingEndDate(borrowingEntity.get().getBorrowingEndDate());
 
         }
     }
