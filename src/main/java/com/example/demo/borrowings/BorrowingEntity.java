@@ -13,7 +13,7 @@ import java.util.Date;
 public class BorrowingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="borrowing_id",updatable = false, nullable = false)
+    @Column(name="borrowingId",updatable = false, nullable = false)
     private int borrowingId;
 
     @JoinColumn(name = "customerId")
